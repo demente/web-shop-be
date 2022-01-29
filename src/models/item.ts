@@ -1,17 +1,23 @@
 import {Field, ID, ObjectType} from "@nestjs/graphql";
+import {Column, Entity, PrimaryGeneratedColumn} from "typeorm";
 
 @ObjectType('item', { description: 'Product available in the shop' })
+@Entity({ name: 'items' })
 class Item {
+  @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
   id: string;
 
-  @Field()
+  @Column('varchar', { nullable: true })
+  @Field({nullable: true})
   description: string;
 
+  @Column('varchar', { nullable: false })
   @Field()
   title: string;
 
-  @Field()
+  @Column('varchar', { nullable: true })
+  @Field({nullable: true})
   picture: string;
 }
 

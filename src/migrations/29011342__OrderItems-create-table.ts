@@ -40,7 +40,7 @@ export class OrderItemsTable1643467453000 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    queryRunner.query(`DROP TABLE orders`);
+    queryRunner.query(`DROP TABLE order_items`);
   }
 
 }
