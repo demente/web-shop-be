@@ -1,6 +1,6 @@
 import {Field, ID, ObjectType} from "@nestjs/graphql";
 import {Item} from "./item";
-import {Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
+import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity({ name: 'orders' })
 @ObjectType('order', { description: 'Completed order' })
@@ -10,11 +10,20 @@ class Order {
   id: string;
 
   @ManyToMany(() => Item)
-  @JoinTable({name: "order_items"})
-  @Field(() => Item)
+  @JoinTable({name: "order_items",
+    joinColumn: {
+      name: "order_id",
+      referencedColumnName: "id"
+    },
+    inverseJoinColumn: {
+      name: "item_id",
+      referencedColumnName: "id"
+    }})
+  @Field(() => [Item])
   items: Item[];
 
-  @Field()
+  @Column('varchar', { nullable: false })
+  @Field({nullable: false})
   email: string;
 }
 

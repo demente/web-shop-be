@@ -18,7 +18,12 @@ export class AppService {
     return this.itemRepository.find({});
   }
 
-  addItemToShoppingCart() {
-    return undefined;
+
+  async completeOrder(itemIds: string[], email: string): Promise<Order> {
+    const items = await this.itemRepository.findByIds(itemIds);
+    const order = this.orderRepository.create()
+    order.email = email;
+    order.items = items;
+    return this.orderRepository.save(order);
   }
 }

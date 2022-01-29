@@ -1,11 +1,12 @@
 import {Module} from '@nestjs/common';
 import {AppService} from './app.service';
 import {GraphQLModule} from "@nestjs/graphql";
-import {AppResolver} from "./app.resolver";
+import { ItemResolver} from "./item.resolver";
 import {Item} from "./models/item";
 import {Order} from "./models/order";
 import {TypeOrmModule} from "@nestjs/typeorm";
 import { ConfigService, ConfigModule } from '@nestjs/config';
+import {OrderResolver} from "./order.resolver";
 
 @Module({
   imports: [GraphQLModule.forRoot({
@@ -33,7 +34,7 @@ import { ConfigService, ConfigModule } from '@nestjs/config';
     }),
   ],
 
-  providers: [AppService, AppResolver],
+  providers: [AppService, ItemResolver, OrderResolver],
 })
 
 export class AppModule {
