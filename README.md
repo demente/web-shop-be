@@ -8,7 +8,7 @@ Simple web shop backend written with [Nest](https://github.com/nestjs/nest) fram
 $ yarn install
 ```
 
-Generate database schema:
+Generate database schema and populate database with sample items:
 
 ```bash
 $ yarn migration:run:local
@@ -19,17 +19,4 @@ $ yarn migration:run:local
 
 ```bash
 $ yarn start
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
 ```

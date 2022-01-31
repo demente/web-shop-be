@@ -3,7 +3,7 @@ import {Item} from "./item";
 import {Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn} from "typeorm";
 
 @Entity({ name: 'orders' })
-@ObjectType('order', { description: 'Completed order' })
+@ObjectType('Order', { description: 'Completed order' })
 class Order {
   @PrimaryGeneratedColumn('uuid')
   @Field(() => ID)
